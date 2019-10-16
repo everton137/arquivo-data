@@ -4,9 +4,10 @@ Data from twitter scrapping
 # Creating the postgres database
 
 * $ su - postgres
-* $ create user db_owner
-* $ createdb -O db_owner db_name 
-* $ psql db_name
+* $ psql
+* postgres=# CREATE USER db_owner;
+* postgres=# CREATE DATABASE db_name WITH OWNER db_owner;
+* postgres=# \c db_name
 * DB_NAME=# ALTER USER db_owner WITH PASSWORD 'db_password';
 * DB_NAME=# CREATE TABLE tweets (id serial primary key not null, tweet jsonb, content text, time timestamptz);
 * DB_NAME=# GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO "db_owner";
